@@ -1,1 +1,67 @@
 # prog2.tri2.ativ3
+
+## Classes e Objetos
+
+### Exemplo 1 — Conta Bancária
+
+Classes e objetos são usados para representar entidades do mundo real com estado e comportamento.
+
+```ts
+// Justificativa:
+// Classes e objetos permitem modelar entidades reais com dados e comportamentos.
+// Aqui a conta bancária possui saldo e operações como saque e depósito.
+
+class ContaBancaria {
+    titular: string;
+    saldo: number;
+
+    constructor(titular: string, saldoInicial: number) {
+        this.titular = titular;
+        this.saldo = saldoInicial;
+    }
+
+    depositar(valor: number) {
+        this.saldo += valor;
+    }
+
+    sacar(valor: number) {
+        if (valor <= this.saldo) {
+            this.saldo -= valor;
+        }
+    }
+}
+
+const conta1 = new ContaBancaria("Maria", 1000);
+conta1.depositar(500);
+conta1.sacar(200);```
+
+[Abrir exemplo no TypeScript Playground](https://www.typescriptlang.org/play/?&install-plugin=@structured-types/instant-documentation-plugin#code/PTAECkFcGcBcEsBm8DGBDBA3NAuAUCKAIKiQIA28AXmgOcDHA9qACYCmoK5a00b0oDowBGAKzaxGAgJeg07AI6R5aUErQA7Fs3Z9RaALZTQAJzYAHM3w2w0JgmDY34Lef1bMDkLczNpyapAc5lLQQQaCcPLMABQYJvDCZFIAlIKcjAYhJrYGTpKgMQbSktrQKQB0Dg6gAHL8sBxsAB5sWeSMADSkBqoojDaqwpooAIcJqiG8kPCs0QKWAM+W8Mb9RqAIsJDcJunQ-tqdNf7SEeygjOZsJnQAr+5m3CirGioCqmzc3es6FovQeAFDgHJRsKogGoAUQilkYAHNbr0GMxEN4XgN-KAQuwTABbwzGMjwSg0PZojS0B4CJpwExkSC3AQXVxlY6EbJnOSXBL5OhMbkicSSBY3AxAjhoRGQcx2OZldLrbK5fLGNo9NA1ABfGlQqm8LjcoHIi3heu6iDQL0oth83KM7G48PV2g8BjxusYVTwXB4AgAwgNbAAhEZ2eCqADeeFAsc2QJ2dhwoDp8A08IA3DG4wdyNpkxpIAZhDcs9nY-0NHTIChJCYYltEyZk6n091c9oAJK6l7+AtFksmNLRuOjzYAC3g0Aqjd2oAAvPHtrss2O47BJ9OO8xF9vu6gI+RV3GAL54cusCxSIF2GLYDrN0CF4s3FLJzCMFygEdridTirbqAADUi73owJjHmulbQIw5Dgh08IxAABgAIv8gIFBcABKAAkOGRmBJgnqYbD+NQ0QVEhKSQaAZ4Xgc6D1oR-YvkO76fiw34XqOSCFIRoAADyLhu-7bsO3G-iJW6HMwAC0oH+OBNG-hkVawfBCLIQAymgYKXqAuH4YRxF+KSFFUcpp6COQfBcSpo7QepFQITEABEOl5swaZhMgLz5OCrnURJsZnqOdGji0iTwCYHnaDEb6gB+X4-lBAwwXBzmaUh+FSTOCa7MRUxhLMhmRrl24nhZF5nnR0GwKptgAIwLk+bAAO6gIGgyhhojERm5ACy4ZoK53SNQADJNQU+kGaCNRUkXCNFsWMPFWaVk1FTsFMN71gArFN62zfNDG3gATIdM2DPNi3LTJa1AA)
+
+### Exemplo 2 — Produto
+
+```ts
+// Justificativa:
+// Classes permitem criar múltiplas instâncias com a mesma estrutura.
+// Cada produto tem seus próprios dados e comportamentos.
+
+class Produto {
+    nome: string;
+    preco: number;
+
+    constructor(nome: string, preco: number) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    aplicarDesconto(percentual: number) {
+        this.preco -= this.preco * (percentual / 100);
+    }
+}
+
+const p1 = new Produto("Notebook", 3500);
+const p2 = new Produto("Mouse", 120);
+
+p1.aplicarDesconto(10);
+p2.aplicarDesconto(5);```
+
+[Abrir exemplo no TypeScript Playground](https://www.typescriptlang.org/play/?&install-plugin=@structured-types/instant-documentation-plugin#code/PTAECkFcGcBcEsBm8DGBDBA3NAuAUCKAMIA2a00AptKJaAPYBGAVpbPTdAMf2gBfsSvBoBHSGgB2AE14AHAE6UUwtAFsOoFPPhp5oVXxIJZZGvAlwARxOXkCYMXRT1Vs3QhIALNaDT7qqn7UsPKQsJDyaAA0+uSgshzQkJSqoFJoMjRSSJSKEoLQAHT29qAAcsF0lAAeKSb0MdmYudAaCvRSYW0dKaBUelo6mb7x7vB66f7QgZqmVMWEAIKz5FSgiJA28PQSfs7qoJCp6iRSlDGUEmKS7JoZfkyst4oK1Jewfkfx8h1dpdSyJQAW+QzgWwFKAFFUkc-GhGPR5OkAOa9DZbHZoEjxHryIFqDRheAkeAAL10DBYbA0JMEkWEtHWmwA5wBX6ilKhuSLpaAxQI0B7ad5oZk8EaPak0RBoTCIpR0PyKIkk8li3h0RHIyRk0U8UoyTQAZ+yyN4aF4zhs70ieg0+wS8g+qneGjO+R+aT8CiNCh0tHy8HSZ2KeBQc1AAAUfp1bgBvPCgJOgCQuSg4PohczIgDcieTr2cGYkR0YuTz+aTVrgoRQ7HkAApUy6MzXszFC-Ri6XcgBKUAJ5ND0CwTzCQrNugAXhTabzw+To-HndAM878+TAF88JXfCZULoACLUK3sBuA+Qod7iEjd1Rl+S9jNyoMD3dDpdFFcAWhnn8KK4AFSgOeuRXvkN6gGAACMAAMsG9huSbbruNTwIw4wAJISIgiKBM41ANk+oAvlIb4LlWOytCQlCFCQ9DIg2AAG0a-OwGYACRxv+k6bkxiHvsm1b0DRdEMcx0aUMyXagAAShxXH-p2hTsAAYvAtRSA2ABMvZ8QJQ7bih1awLOggIvQADWq4ppQADuUYxl0DYAERlPQ5n0FZLkxAAzAArPBAkmfo9AwNOtkOaxsb0K5ACyYVUD5oDQdpCEVqmnlWYUaD7ug8jHtAp6xXBAnqOFOV5UeJ47Ge-kCXgmWUBZlmFGhGHyNhuHyPh9CEcFVEibR9GMS537jRNLllYltHtVhOF4WgBHQEROZAA)
